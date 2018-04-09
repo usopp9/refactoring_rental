@@ -34,12 +34,20 @@ public class Customer {
 			
 			result.append("\t" + each.getMovie().getTitle());
 			result.append("\t" +String.valueOf(each.getCharge())+ "\n");
-			
-			totalAmount += each.getCharge();		
+	
 		}
-		result.append("누적 대여료 : " + String.valueOf(totalAmount) + "\n");
+		result.append("누적 대여료 : " + String.valueOf(getTotalCharge()) + "\n");
 		result.append("적립 포인트 : " + String.valueOf(frequentRenterPoints));
 		
 		return result.toString();
+	}
+
+
+	private double getTotalCharge() {
+		double result = 0;
+		for(Rental rental : rentals) {
+			result += rental.getCharge();
+		}
+		return result;
 	}
 }
