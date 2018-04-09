@@ -23,23 +23,28 @@ public class Customer {
 	}
 	
 	public String statement() {
-		double totalAmount = 0;
-		int frequentRenterPoints = 0;
-		
+	
 		StringBuilder result = new StringBuilder(getName() + "고객님의 대여기록\n");
 		
 		for(Rental each:rentals) {
-			
-			frequentRenterPoints += each.getFrequentRentalPoints();
 			
 			result.append("\t" + each.getMovie().getTitle());
 			result.append("\t" +String.valueOf(each.getCharge())+ "\n");
 	
 		}
 		result.append("누적 대여료 : " + String.valueOf(getTotalCharge()) + "\n");
-		result.append("적립 포인트 : " + String.valueOf(frequentRenterPoints));
+		result.append("적립 포인트 : " + String.valueOf(getFrequentRenterPoints()));
 		
 		return result.toString();
+	}
+
+
+	private int getFrequentRenterPoints() {
+		int result = 0;
+		for(Rental rental : rentals) {
+			result += rental.getFrequentRentalPoints();
+		}
+		return result;
 	}
 
 
