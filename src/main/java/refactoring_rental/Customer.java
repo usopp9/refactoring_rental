@@ -37,7 +37,23 @@ public class Customer {
 		
 		return result.toString();
 	}
-
+	public String htmlStatement() {
+		
+		StringBuilder result = new StringBuilder("<H1><EM>" + getName() + "고객님의 대여기록 </EM></H1><p>\n");
+		
+		for(Rental each:rentals) {
+			
+			result.append(each.getMovie().getTitle() + ": ");
+			result.append(String.valueOf(each.getCharge())+ "<br>\n");
+	
+		}
+		result.append("<p>누적 대여료 : <EM>");
+		result.append(String.valueOf(getTotalCharge()) + "</EM>\n");
+		result.append("<p>적립 포인트 : <EM>");
+		result.append(String.valueOf(getFrequentRenterPoints())+"</EM><p>");
+		
+		return result.toString();
+	}
 
 	private int getFrequentRenterPoints() {
 		int result = 0;
