@@ -1,12 +1,19 @@
 package refactoring_rental.price;
 
-import refactoring_rental.Movie;
-
 public class Action extends Price {
+	private static final Action instance = new Action();
+
+	
+	public static Action getInstance() {
+		return instance;
+	}
+
+	private Action() {
+	}
 
 	@Override
-	public int getPriceCode() {
-		return Movie.ACTION;
+	public PriceType getPriceCode() {
+		return PriceType.ACTION;
 	}
 
 	@Override

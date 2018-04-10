@@ -1,12 +1,18 @@
 package refactoring_rental.price;
 
-import refactoring_rental.Movie;
-
 public class Regular extends Price {
+	private static final Regular instance = new Regular();
+	
+	
+	public static Regular getInstance() {
+		return instance;
+	}
 
+	private Regular() {
+	}
 	@Override
-	public int getPriceCode() {
-		return Movie.REGULAR;
+	public PriceType getPriceCode() {
+		return PriceType.REGULAR;
 	}
 
 	@Override

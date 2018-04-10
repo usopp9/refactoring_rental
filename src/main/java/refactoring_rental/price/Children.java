@@ -1,12 +1,19 @@
 package refactoring_rental.price;
 
-import refactoring_rental.Movie;
-
 public class Children extends Price {
+	private static final Children instance = new Children();
+
+	
+	public static Children getInstance() {
+		return instance;
+	}
+
+	private Children() {
+	}
 
 	@Override
-	public int getPriceCode() {
-		return Movie.CHILDRENS;
+	public PriceType getPriceCode() {
+		return PriceType.CHILDRENS;
 	}
 
 	@Override
